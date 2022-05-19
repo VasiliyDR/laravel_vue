@@ -6,37 +6,36 @@ volumes:
   db-data:
 
 services:
-  frontend:
-    container_name: 0203-frontend
+  nginx:
+    container_name: nginx
     build:
       context: .
-      dockerfile: .deploy/docker/frontend/Dockerfile
+      dockerfile: .deploy/docker/nginx/Dockerfile
     volumes:
-      - ./.deploy/docker/frontend/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./.deploy/docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - .:/app
     depends_on:
-      - backend
+      - php-fpm
     ports:
       - 8081:80
 
-  backend:
-    container_name: 0203-backend
+  php-fpm:
+    container_name: php-fpm
     build:
       context: .
-      dockerfile: .deploy/docker/backend/Dockerfile
+      dockerfile: .deploy/docker/php-fpm/Dockerfile
     env_file:
         - ./.env
     volumes:
       - .:/app
 
-
   db:
-    container_name: 02-03-db
+    container_name: db
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: root
       POSTGRES_DB: app
-    volumes: 
+    volumes:
       - db-data:/var/lib/postgresql/data
 

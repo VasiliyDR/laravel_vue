@@ -12,25 +12,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/contacts', function () {
-    return view('contacts');
-});
-
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/story', function () {
-    return view('story');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
 
 
-Route::get('/services', function () {
-    return view('services');
-});
+Auth::routes();
 
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
