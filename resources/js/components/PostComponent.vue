@@ -2,6 +2,7 @@
     <div class="container">
         <h1>Hello world!</h1>
         <CreateComponent></CreateComponent>
+        <IndexComponent></IndexComponent>
 <!--        <table class="table">-->
 <!--            <thead>-->
 <!--            <tr>-->
@@ -25,10 +26,12 @@
 
 <script>
 import CreateComponent from "./CreateComponent";
+import IndexComponent from "./IndexComponent";
 export default {
     name: "PostComponent",
     components: {
         CreateComponent,
+        IndexComponent,
     },
 
     data() {
