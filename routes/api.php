@@ -22,4 +22,5 @@ Route::group(['namespace' => '\App\Http\Controllers\Person', 'prefix' => 'people
    Route::post('/', StoreController::class);
    Route::get('/', IndexController::class);
    Route::patch('/{person}', UpdateController::class);
+   Route::delete('/{person}', DeleteController::class);
 });

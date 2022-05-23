@@ -5362,6 +5362,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "IndexComponent",
   data: function data() {
@@ -5405,6 +5407,15 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res);
 
         _this2.getPeople();
+      });
+    },
+    deletePerson: function deletePerson(id) {
+      var _this3 = this;
+
+      axios["delete"]("/api/people/".concat(id)).then(function (res) {
+        console.log(res);
+
+        _this3.getPeople();
       });
     }
   }
@@ -28355,6 +28366,23 @@ var render = function () {
                         [_vm._v("Edit")]
                       ),
                     ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-outline-danger",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function ($event) {
+                              $event.preventDefault()
+                              return _vm.deletePerson(person.id)
+                            },
+                          },
+                        },
+                        [_vm._v("Delete")]
+                      ),
+                    ]),
                   ])
                 : _vm._e(),
               _vm._v(" "),
@@ -28478,6 +28506,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Job")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")]),
       ]),
     ])
   },
