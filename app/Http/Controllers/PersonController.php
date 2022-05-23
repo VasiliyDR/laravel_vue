@@ -27,6 +27,12 @@ class PersonController extends Controller
                 'age' => 30,
                 'job' => 'singer'
             ],
+            [
+                'id' => 4,
+                'name' => 'Irina',
+                'age' => 35,
+                'job' => 'driver'
+            ],
         ];
         return $persons;
     }
